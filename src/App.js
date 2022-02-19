@@ -9,15 +9,24 @@ function App() {
   const [filter, setFilter] = useState("all");
 
   const addItem = (item) => {
-    setList((prevState) => {
-      return [...prevState, item];
-    });
+    if (item.length > 0) {
+      setList((prevState) => {
+        return [...prevState, item];
+      });
+    }
   };
 
   const addCompleted = (completeditem) => {
-    setCompleted((prevState) => {
-      return [...prevState, completeditem];
-    });
+    if (!completed.includes(completeditem)) {
+      setCompleted((prevState) => {
+        return [...prevState, completeditem];
+      });
+    } else {
+      const newList = completed.filter((item) => {
+        return item !== completeditem;
+      });
+      setCompleted(newList);
+    }
   };
 
   const removeItem = (removeditem) => {

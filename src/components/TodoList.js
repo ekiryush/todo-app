@@ -15,13 +15,14 @@ const TodoList = ({ list, completed, addCompleted, removeItem, filter }) => {
   }
 
   return (
-    <div>
+    <div className="list-container">
       <ul>
         {todoList &&
           todoList.map((item, index) => (
             <TodoItem
               key={index}
               item={item}
+              completed={completed.includes(item)}
               addCompleted={addCompleted}
               removeItem={removeItem}
             />
